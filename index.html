@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bilim Testi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen active">
+        <div class="loading-content">
+            <div class="islamic-pattern"></div>
+            <h1 class="app-title">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
+            <p class="app-subtitle">Bilim Testi</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="container">
+            <div class="auth-card">
+                <div class="islamic-ornament"></div>
+                <h2>Kirish</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="loginEmail">Elektron pochta</label>
+                        <input type="email" id="loginEmail" required placeholder="email@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="loginPassword">Parol</label>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kirish</button>
+                </form>
+                <p class="auth-switch">
+                    Akkauntingiz yo'qmi?
+                    <a href="#" id="showRegister">Ro'yxatdan o'tish</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Screen -->
+    <div id="registerScreen" class="screen">
+        <div class="container">
+            <div class="auth-card">
+                <div class="islamic-ornament"></div>
+                <h2>Ro'yxatdan o'tish</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label for="registerName">Ism</label>
+                        <input type="text" id="registerName" required placeholder="Ismingiz">
+                    </div>
+                    <div class="input-group">
+                        <label for="registerEmail">Elektron pochta</label>
+                        <input type="email" id="registerEmail" required placeholder="email@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="registerPassword">Parol</label>
+                        <input type="password" id="registerPassword" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ro'yxatdan o'tish</button>
+                </form>
+                <p class="auth-switch">
+                    Akkauntingiz bormi?
+                    <a href="#" id="showLogin">Kirish</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="homeScreen" class="screen">
+        <div class="header">
+            <div class="header-content">
+                <h1>Assalomu alaykum!</h1>
+                <button id="logoutBtn" class="icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="user-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h3 id="totalTests">0</h3>
+                        <p>Topshirilgan testlar</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h3 id="avgScore">0%</h3>
+                        <p>O'rtacha natija</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Kategoriyalar</h2>
+                <button id="showAdminBtn" class="btn btn-secondary btn-sm">Admin</button>
+            </div>
+
+            <div id="categoriesList" class="categories-grid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" class="screen">
+        <div class="test-header">
+            <button id="exitTestBtn" class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="test-info">
+                <h3 id="testCategoryName">Test</h3>
+                <p id="testProgress">1/10</p>
+            </div>
+            <div class="timer" id="timer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span id="timeLeft">10:00</span>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="question-card">
+                <h3 id="questionText">Savol yuklanmoqda...</h3>
+                <div id="answersContainer" class="answers-container">
+                    <!-- Answers will be loaded here -->
+                </div>
+                <div class="question-actions">
+                    <button id="nextQuestionBtn" class="btn btn-primary" style="display: none;">Keyingi savol</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+        <div class="container">
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="results-icon">🎉</div>
+                    <h2>Test yakunlandi!</h2>
+                </div>
+
+                <div class="score-circle">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#e0e0e0" stroke-width="12" />
+                        <circle id="scoreCircle" cx="100" cy="100" r="90" fill="none" stroke="url(#gradient)"
+                            stroke-width="12" stroke-dasharray="565.48" stroke-dashoffset="565.48"
+                            transform="rotate(-90 100 100)" />
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="score-text">
+                        <h3 id="scorePercentage">0%</h3>
+                        <p id="scoreDetails">0/0</p>
+                    </div>
+                </div>
+
+                <div class="results-details">
+                    <div class="result-item">
+                        <span>To'g'ri javoblar:</span>
+                        <strong id="correctAnswers">0</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Noto'g'ri javoblar:</span>
+                        <strong id="wrongAnswers">0</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Sarflangan vaqt:</span>
+                        <strong id="timeSpent">0:00</strong>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="backToHomeBtn" class="btn btn-primary">Bosh sahifaga</button>
+                    <button id="reviewAnswersBtn" class="btn btn-secondary">Javoblarni ko'rish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Screen -->
+    <div id="adminScreen" class="screen">
+        <div class="header">
+            <div class="header-content">
+                <button id="backFromAdminBtn" class="icon-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <h1>Admin Panel</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="add">Savol qo'shish</button>
+                <button class="tab-btn" data-tab="manage">Savollar ro'yxati</button>
+                <button class="tab-btn" data-tab="categories">Kategoriyalar</button>
+            </div>
+
+            <!-- Add Question Tab -->
+            <div id="addQuestionTab" class="tab-content active">
+                <form id="addQuestionForm" class="admin-form">
+                    <div class="input-group">
+                        <label for="questionCategory">Kategoriya</label>
+                        <select id="questionCategory" required>
+                            <option value="">Kategoriyani tanlang</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="questionTextInput">Savol matni</label>
+                        <textarea id="questionTextInput" required rows="3" placeholder="Savolni kiriting..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Javob variantlari</label>
+                        <input type="text" id="answer1" required placeholder="1-variant" class="mb-2">
+                        <input type="text" id="answer2" required placeholder="2-variant" class="mb-2">
+                        <input type="text" id="answer3" required placeholder="3-variant" class="mb-2">
+                        <input type="text" id="answer4" required placeholder="4-variant">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="correctAnswer">To'g'ri javob</label>
+                        <select id="correctAnswer" required>
+                            <option value="">To'g'ri javobni tanlang</option>
+                            <option value="0">1-variant</option>
+                            <option value="1">2-variant</option>
+                            <option value="2">3-variant</option>
+                            <option value="3">4-variant</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Savolni saqlash</button>
+                </form>
+            </div>
+
+            <!-- Manage Questions Tab -->
+            <div id="manageQuestionsTab" class="tab-content">
+                <div class="filter-bar">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="">Barcha kategoriyalar</option>
+                    </select>
+                </div>
+                <div id="questionsList" class="questions-list">
+                    <!-- Questions will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Categories Tab -->
+            <div id="categoriesTab" class="tab-content">
+                <form id="addCategoryForm" class="admin-form">
+                    <div class="input-group">
+                        <label for="categoryName">Kategoriya nomi</label>
+                        <input type="text" id="categoryName" required placeholder="Masalan: Namoz">
+                    </div>
+                    <div class="input-group">
+                        <label for="categoryIcon">Icon (emoji)</label>
+                        <input type="text" id="categoryIcon" required placeholder="🕌" maxlength="2">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kategoriya qo'shish</button>
+                </form>
+                <div id="categoriesManageList" class="categories-manage-list">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

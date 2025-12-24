@@ -1,3 +1,5 @@
+
+
 // ==================== DATA STORAGE ====================
 // LocalStorage keys
 const STORAGE_KEYS = {
@@ -16,13 +18,17 @@ function initializeDefaultData() {
             { id: 2, name: "Ro'za", icon: '☪️', questionCount: 0 },
             { id: 3, name: 'Hadis', icon: '📖', questionCount: 0 },
             { id: 4, name: 'Tawhid', icon: '✨', questionCount: 0 },
-            { id: 5, name: 'Fiqh', icon: '⚖️', questionCount: 0 }
+            { id: 5, name: 'Fiqh', icon: '⚖️', questionCount: 0 },
+            { id: 6, name: 'Tarix', icon: '📜', questionCount: 0 },
+            { id: 7, name: 'Axloq', icon: '💎', questionCount: 0 },
+            { id: 8, name: 'Qur\'on', icon: '📕', questionCount: 0 }
         ];
         localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(defaultCategories));
     }
 
     if (!localStorage.getItem(STORAGE_KEYS.QUESTIONS)) {
         const defaultQuestions = [
+            // Namoz (5 ta)
             {
                 id: 1,
                 categoryId: 1,
@@ -39,24 +45,100 @@ function initializeDefaultData() {
             },
             {
                 id: 3,
+                categoryId: 1,
+                text: "Peshin namozi necha rakat?",
+                answers: ["2 rakat", "3 rakat", "4 rakat", "6 rakat"],
+                correctAnswer: 2
+            },
+            {
+                id: 4,
+                categoryId: 1,
+                text: "Namozning asosiy shartlari nechta?",
+                answers: ["5 ta", "7 ta", "9 ta", "12 ta"],
+                correctAnswer: 1
+            },
+            {
+                id: 5,
+                categoryId: 1,
+                text: "Namozda birinchi o'qiladigan surа?",
+                answers: ["Fotiha", "Ixlos", "Kavsar", "Nas"],
+                correctAnswer: 0
+            },
+            // Ro'za (3 ta)
+            {
+                id: 6,
                 categoryId: 2,
                 text: "Ramazon oyi nechanchi hijriy oyda?",
                 answers: ["7-oy", "8-oy", "9-oy", "10-oy"],
                 correctAnswer: 2
             },
             {
-                id: 4,
+                id: 7,
+                categoryId: 2,
+                text: "Ro'zaning farz bo'lishi qaysi yilda?",
+                answers: ["1-yil", "2-yil", "3-yil", "5-yil"],
+                correctAnswer: 1
+            },
+            {
+                id: 8,
+                categoryId: 2,
+                text: "Saharlik qaysi vaqtda iste'mol qilinadi?",
+                answers: ["Bomdoddan oldin", "Peshindan oldin", "Shomdan oldin", "Xuftondan oldin"],
+                correctAnswer: 0
+            },
+            // Hadis (2 ta)
+            {
+                id: 9,
                 categoryId: 3,
-                text: "Birinchi hadis yig'gan sahobachi kim?",
+                text: "Eng ko'p hadis rivoyat qilgan sahoba?",
                 answers: ["Abu Huroyra", "Abdullah ibn Abbos", "Anas ibn Molik", "Abu Bakr"],
                 correctAnswer: 0
             },
             {
-                id: 5,
+                id: 10,
+                categoryId: 3,
+                text: "'Sahih al-Buxoriy' muallifi kim?",
+                answers: ["Imom Muslim", "Imom Buxoriy", "Imom Tirmiziy", "Imom Ahmad"],
+                correctAnswer: 1
+            },
+            // Tawhid (2 ta)
+            {
+                id: 11,
                 categoryId: 4,
                 text: "Tawhidning ma'nosi nima?",
                 answers: ["Imon keltirish", "Allohning birligiga iqror bo'lish", "Namoz o'qish", "Sadaqa berish"],
                 correctAnswer: 1
+            },
+            {
+                id: 12,
+                categoryId: 4,
+                text: "Islomning asosiy ustunlari nechta?",
+                answers: ["3 ta", "4 ta", "5 ta", "6 ta"],
+                correctAnswer: 2
+            },
+            // Fiqh (1 ta)
+            {
+                id: 13,
+                categoryId: 5,
+                text: "Tahoratning farzlari nechta?",
+                answers: ["3 ta", "4 ta", "5 ta", "6 ta"],
+                correctAnswer: 1
+            },
+            // Axloq (1 ta)
+            {
+                id: 14,
+                categoryId: 7,
+                text: "Islomda eng yaxshi xulq-atvor nima?",
+                answers: ["Saxiylik", "Halollik", "Sabr-toqat", "Barchasi to'g'ri"],
+                correctAnswer: 3
+            },
+            // Qur'on (1 ta)
+            {
+                id: 15,
+                categoryId: 8,
+                text: "Qur'ondagi suralar soni?",
+                answers: ["100 ta", "110 ta", "114 ta", "120 ta"],
+                correctAnswer: 2
             }
         ];
         localStorage.setItem(STORAGE_KEYS.QUESTIONS, JSON.stringify(defaultQuestions));

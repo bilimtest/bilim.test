@@ -1,3 +1,4 @@
+
 :root {
     /* Islamic Color Palette */
     --primary-green: #10b981;
@@ -72,7 +73,8 @@ body {
 }
 
 .screen.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
     opacity: 1;
     animation: fadeIn 0.3s ease;
 }
@@ -199,7 +201,8 @@ body {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-xl);
     max-width: 400px;
-    margin: var(--spacing-lg) auto;
+    margin: 0 auto;
+    margin-top: 5vh;
     position: relative;
     overflow: hidden;
 }
